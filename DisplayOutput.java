@@ -11,6 +11,7 @@ public class DisplayOutput extends JFrame {
 
 	public static void main(String[] args) throws InterruptedException {
 		DisplayOutput frame = new DisplayOutput();
+
         HangmanPanel p = new HangmanPanel();
         frame.add(p);
 
