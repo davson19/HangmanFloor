@@ -2,8 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class HangmanPanel extends JPanel {
-
-    private int numWrong = 0;
+	private static final long serialVersionUID = 1L;
+	
+	private int numWrong = 0;
 
     public void increment() {numWrong++;}
 
