@@ -14,8 +14,11 @@ public class KeyboardPanel extends JPanel{
         this.spacebar = spacebar;
         setLayout(new GridLayout(3, 12));
         for (int i = 0; i < keys.length; i++) {
+            GridBagConstraints c = new GridBagConstraints();
+            c.gridx = i % 12;
+            c.gridy = i /12;
             keys[i] = new RectPanel();
-            add(keys[i]);
+            add(keys[i], c);
         }
 
     }
