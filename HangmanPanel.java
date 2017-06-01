@@ -1,3 +1,5 @@
+package HangmanFloor;
+
 import javax.swing.*;
 import java.awt.*;
 

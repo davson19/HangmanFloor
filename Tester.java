@@ -1,3 +1,5 @@
+package HangmanFloor;
+
 /**
  * Created by micpi on 5/22/2017.
  */
