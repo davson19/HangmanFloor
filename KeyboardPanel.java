@@ -6,14 +6,16 @@ import java.awt.*;
 /**
  * Created by micpi on 5/30/2017.
  */
-public class KeyboardPanel extends JPanel{
-    boolean spacebar;
+public class KeyboardPanel extends JPanel {
+	private static final long serialVersionUID = 1L;
+	boolean spacebar;
     Point[] positions;
     RectPanel[] keys = new RectPanel[26];
     public KeyboardPanel(boolean spacebar) {
         this.spacebar = spacebar;
         setLayout(new GridLayout(3, 12));
         for (int i = 0; i < keys.length; i++) {
+        	System.out.println(i);
             keys[i] = new RectPanel();
             add(keys[i]);
         }
