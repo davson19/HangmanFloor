@@ -12,7 +12,7 @@ public class KeyboardPanel extends JPanel{
     RectPanel[] keys = new RectPanel[26];
     public KeyboardPanel(boolean spacebar) {
         this.spacebar = spacebar;
-        setLayout(new GridLayout(3, 12));
+        setLayout(new GridBagLayout());
         for (int i = 0; i < keys.length; i++) {
             GridBagConstraints c = new GridBagConstraints();
             c.gridx = i % 12;
