@@ -29,11 +29,18 @@ public class WordsPanel extends JPanel {
 
     public boolean update (char c) {
         boolean inString = false;
+<<<<<<< HEAD
         for (int i = 0; i < 5; i++) { // it came broken i had to fix it
+=======
+        for (int i ) {
+>>>>>>> origin/master
             if (c == solved.charAt(i++)) {
                 inString = true;
             }
         }
+<<<<<<< HEAD
         return true; // here too
+=======
+>>>>>>> origin/master
     }
 }
