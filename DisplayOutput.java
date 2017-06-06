@@ -15,10 +15,6 @@ public class DisplayOutput extends JFrame {
         frame.add(kp);
 //        WordsPanel wp = new WordsPanel("Hello World");
 //        frame.add(wp);
-//        KeyboardPanel kp = new KeyboardPanel(false);
-//        frame.add(kp);
-        WordsPanel wp = new WordsPanel("Hello World");
-        frame.add(wp);
 
 		frame.setTitle("Hangman!");
 		frame.setSize(192, 192);
