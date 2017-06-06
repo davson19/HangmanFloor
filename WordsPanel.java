@@ -35,7 +35,7 @@ public class WordsPanel extends JPanel {
         for (int i = 0; i < solved.length(); i++) {
             if (c == solved.charAt(i)) {
                 inString = true;
-                unsolved = unsolved.substring(0, i) + c + unsolved.substring(i+1);
+                unsolved = unsolved.substring(0, i) + c + unsolved.substring(i + 1);
                 numLeft--;
             }
         }

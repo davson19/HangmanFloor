@@ -11,17 +11,14 @@ public class DisplayOutput extends JFrame {
 
 //        HangmanPanel p = new HangmanPanel();
 //        frame.add(p);
-<<<<<<< HEAD
         KeyboardPanel kp = new KeyboardPanel(false);
         frame.add(kp);
 //        WordsPanel wp = new WordsPanel("Hello World");
 //        frame.add(wp);
-=======
 //        KeyboardPanel kp = new KeyboardPanel(false);
 //        frame.add(kp);
         WordsPanel wp = new WordsPanel("Hello World");
         frame.add(wp);
->>>>>>> origin/master
 
 		frame.setTitle("Hangman!");
 		frame.setSize(192, 192);
