@@ -9,6 +9,7 @@ import java.awt.*;
 public class WordsPanel extends JPanel {
     private String solved;
     private String unsolved = "";
+    int numLeft;
 
     public WordsPanel (String str) {
         solved = str;
@@ -16,8 +17,10 @@ public class WordsPanel extends JPanel {
             char c = solved.charAt(i);
             if (c == ' ')
                 unsolved += ' ';
-            else
+            else {
                 unsolved += '-';
+                numLeft++;
+            }
         }
     }
 
@@ -29,10 +32,17 @@ public class WordsPanel extends JPanel {
 
     public boolean update (char c) {
         boolean inString = false;
-        for (int i ) {
-            if (c == solved.charAt(i++)) {
+        for (int i = 0; i < solved.length(); i++) {
+            if (c == solved.charAt(i)) {
                 inString = true;
+                unsolved = unsolved.substring(0, i) + c + unsolved.substring(i+1);
+                numLeft--;
             }
         }
+        return inString;
+    }
+
+    public boolean isSolved () {
+        return numLeft <= 0;
     }
 }
