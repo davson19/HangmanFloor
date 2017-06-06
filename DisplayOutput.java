@@ -18,7 +18,7 @@ public class DisplayOutput extends JFrame {
         p.setPreferredSize(new Dimension(192 / 2, 192 / 2));
         frame.add(p, c);
         c.gridx = 1;
-        WordsPanel wp = new WordsPanel("Hello World");
+        WordsPanel wp = new WordsPanel("LOL");
         wp.setPreferredSize(new Dimension(192 / 2, 192 / 2));
         frame.add(wp, c);
         c.gridx = 0;
@@ -27,9 +27,11 @@ public class DisplayOutput extends JFrame {
         KeyboardPanel kp = new KeyboardPanel(false);
         kp.setPreferredSize(new Dimension(192, 192 / 2));
         frame.add(kp, c);
+        wp.update('L');
+        wp.update('O');
 
 		frame.setTitle("Hangman!");
-		frame.setSize(192, 192);
+		frame.setSize(250, 250);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
