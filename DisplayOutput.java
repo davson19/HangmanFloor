@@ -1,8 +1,6 @@
 package HangmanFloor;
 
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import java.awt.*;
 import java.util.Scanner;
 
 import javax.swing.ImageIcon;
@@ -15,6 +13,20 @@ public class DisplayOutput extends JFrame {
 	public static final int REFRESH = 80;
 
 	public static void main(String[] args) throws InterruptedException {
+	        Point[] pos = new Point[26];
+	        int count = 0;
+            for (int j = 18; j < 21; j+=2) {
+                System.out.println("j: " + j);
+                for (int i = 3; i < 20; i+=2) {
+                    System.out.println("i: " + i);
+                    pos[count++] = new Point(i, j);
+                }
+            }
+
+            for (int i = 4; i < 19; i+=2) {
+                int j = 22;
+                pos[count++] = new Point(i, j);
+            }
 			DisplayOutput frame = new DisplayOutput();
 			frame.setLayout(new GridBagLayout());
 
@@ -53,24 +65,29 @@ public class DisplayOutput extends JFrame {
 				System.out.println("What is the word/phrase that will be used");
 				wp.setWord(scan.nextLine().toUpperCase());
 				wp.repaint();
+                boolean[][] arr = new boolean[0][];
 				try {
-					boolean[][] arr = ArrayFromXML.getArray(new DataReader());
-					// do the code to check input here
+				    arr = ArrayFromXML.getArray(new DataReader());
 				} catch (Exception e) {
 					System.err.println("Error: Make sure that the board is turned on and plugged in.");
 				}
 				
-//				while (!hp.gameOver() && !wp.isSolved()) {
-//					int c = 0;
-//
-//					if (c != 0) {
-//						kp.removeKey((char) c);
-//						if (!(wp.update((char) c))) {
-//							hp.increment();
-//						}
-//					}
-//					Thread.sleep(REFRESH);
-//				}
+				while (!hp.gameOver() && !wp.isSolved()) {
+					int c = 0;
+
+                    for (int i = 0; i < pos.length; i++) {
+                        if (arr[pos[i].x][pos[i].y]) {
+                            c = 'A' + i;
+                        }
+                    }
+					if (c != 0) {
+						kp.removeKey((char) c);
+						if (!(wp.update((char) c))) {
+							hp.increment();
+						}
+					}
+					Thread.sleep(REFRESH);
+				}
 				
 				GameOverPanel end = new GameOverPanel(true);
 				end.setPreferredSize(new Dimension(192, 192));
