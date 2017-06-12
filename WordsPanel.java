@@ -7,7 +7,9 @@ import java.awt.*;
  * Created by micpi on 6/1/2017.
  */
 public class WordsPanel extends JPanel {
-    private String solved;
+    private static final long serialVersionUID = 1L;
+	
+	private String solved;
     private String unsolved = "";
     int numLeft;
     public WordsPanel () {}
