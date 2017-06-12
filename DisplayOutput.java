@@ -15,28 +15,30 @@ public class DisplayOutput extends JFrame {
 	public static final int REFRESH = 80;
 
 	public static void main(String[] args) throws InterruptedException {
-		while (true) {
 			DisplayOutput frame = new DisplayOutput();
 			frame.setLayout(new GridBagLayout());
 
-			GridBagConstraints c = new GridBagConstraints();
-			c.gridx = 0;
-			c.gridy = 0;
+			GridBagConstraints ch = new GridBagConstraints();
+			ch.gridx = 0;
+			ch.gridy = 0;
 			HangmanPanel hp = new HangmanPanel();
 			hp.setPreferredSize(new Dimension(192 / 2, 192 / 2));
-			frame.add(hp, c);
+			frame.add(hp, ch);
 
-			c.gridx = 1;
+            GridBagConstraints cw = new GridBagConstraints();
+			cw.gridx = 1;
+			cw.gridy = 0;
 			WordsPanel wp = new WordsPanel();
 			wp.setPreferredSize(new Dimension(192 / 2, 192 / 2));
-			frame.add(wp, c);
+			frame.add(wp, cw);
 
-			c.gridx = 0;
-			c.gridy = 1;
-			c.gridwidth = 2;
+            GridBagConstraints ck = new GridBagConstraints();
+			ck.gridx = 0;
+			ck.gridy = 1;
+			ck.gridwidth = 2;
 			KeyboardPanel kp = new KeyboardPanel(false);
 			kp.setPreferredSize(new Dimension(192, 192 / 2));
-			frame.add(kp, c);
+			frame.add(kp, ck);
 
 			frame.setTitle("Hangman!");
 			frame.setSize(250, 250);
@@ -47,6 +49,7 @@ public class DisplayOutput extends JFrame {
 			Scanner scan = new Scanner(System.in);
 
 			while (true) {
+                frame.repaint();
 				System.out.println("What is the word/phrase that will be used");
 				wp.setWord(scan.nextLine().toUpperCase());
 				wp.repaint();
@@ -57,55 +60,38 @@ public class DisplayOutput extends JFrame {
 					System.err.println("Error: Make sure that the board is turned on and plugged in.");
 				}
 				
-				while (!hp.gameOver() && !wp.isSolved()) {
-					int ch = 0;
-
-					if (ch != 0) {
-						kp.removeKey((char) ch);
-						if (!(wp.update((char) ch))) {
-							hp.increment();
-						}
-					}
-					Thread.sleep(REFRESH);
-				}
-				frame.remove(kp);
-				frame.remove(wp);
+//				while (!hp.gameOver() && !wp.isSolved()) {
+//					int c = 0;
+//
+//					if (c != 0) {
+//						kp.removeKey((char) c);
+//						if (!(wp.update((char) c))) {
+//							hp.increment();
+//						}
+//					}
+//					Thread.sleep(REFRESH);
+//				}
+				
+				GameOverPanel end = new GameOverPanel(true);
+				end.setPreferredSize(new Dimension(192, 192));
+				GridBagConstraints cg = new GridBagConstraints();
+				cg.gridx = 0;
+				cg.gridy = 0;
+				cg.gridwidth = 2;
+				cg.gridheight = 2;
 				frame.remove(hp);
-				
-				JPanel end = new JPanel();
-				
-				JLabel[] letters = new JLabel[10];
-				letters[0] = new JLabel(new ImageIcon("src/HangmanFloor/images/y.gif"));
-				letters[1] = new JLabel(new ImageIcon("src/HangmanFloor/images/o.gif"));
-				letters[2] = new JLabel(new ImageIcon("src/HangmanFloor/images/u.gif"));
-				letters[3] = new JLabel(new ImageIcon("src/HangmanFloor/images/w.gif"));
-				letters[4] = new JLabel(new ImageIcon("src/HangmanFloor/images/i.gif"));
-				letters[5] = new JLabel(new ImageIcon("src/HangmanFloor/images/n.gif"));
-				letters[6] = new JLabel(new ImageIcon("src/HangmanFloor/images/l.gif"));
-				letters[7] = new JLabel(new ImageIcon("src/HangmanFloor/images/o.gif"));
-				letters[8] = new JLabel(new ImageIcon("src/HangmanFloor/images/s.gif"));
-				letters[9] = new JLabel(new ImageIcon("src/HangmanFloor/images/e.gif"));
-				
-				for (int i = 0; i < 10; i++) {
-					end.add(letters[i]);
-					
-					if (i == 2)
-						if (!wp.isSolved())
-							i = 5;
-					
-					if (i == 5 && wp.isSolved())
-						break;
-				}
-				frame.add(end);
-				Thread.sleep(2000);
-				// check if the array is empty. While it's empty, Thread.sleep the refresh rate.
-				while (true /* input array is empty */) {
-					Thread.sleep(REFRESH);
-				}
+                frame.remove(wp);
+                frame.remove(kp);
+				frame.add(end, cg);
+				end.repaint();
+                frame.repaint();
+                Thread.sleep(5000);
+                frame.remove(end);
+                frame.add(hp, ch);
+                frame.add(wp, cw);
+                frame.add(kp, ck);
 			}
-			
-			
-		}
+
 	}
 
 }
