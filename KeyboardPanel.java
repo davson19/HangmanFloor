@@ -16,8 +16,8 @@ public class KeyboardPanel extends JPanel {
 		this.spacebar = spacebar;
 
 		for (int i = 0; i < keys.length; i++) {
-			ImageIcon image = new ImageIcon("src/HangmanFloor/images/" + Character.toString(((char)(i + 'a'))) +".gif");
-			JLabel label = new JLabel(image);
+            Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/" + Character.toString(((char)(i + 'a'))) + ".gif"));
+			JLabel label = new JLabel(new ImageIcon(image));
 			keys[i] = label;
 			add(label);
 		}
