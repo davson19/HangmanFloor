@@ -7,7 +7,9 @@ import java.awt.*;
  * Created by micpi on 6/12/2017.
  */
 public class GameOverPanel extends JPanel {
-    boolean win;
+	private static final long serialVersionUID = 1L;
+	
+	boolean win;
     public GameOverPanel (boolean win) {
         this.win = win;
     }
