@@ -10,8 +10,19 @@ public class WordsPanel extends JPanel {
     private String solved;
     private String unsolved = "";
     int numLeft;
+    public WordsPanel () {}
 
     public WordsPanel (String str) {
+        setWord(str);
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawString(unsolved, getWidth() / 2, getHeight() / 2);
+    }
+
+    public void setWord (String str) {
         solved = str;
         for (int i  = 0; i < solved.length(); i++) {
             char c = solved.charAt(i);
@@ -22,12 +33,6 @@ public class WordsPanel extends JPanel {
                 numLeft++;
             }
         }
-    }
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.drawString(unsolved, getWidth() / 2, getHeight() / 2);
     }
 
     public boolean update (char c) {

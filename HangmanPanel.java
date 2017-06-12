@@ -10,6 +10,10 @@ public class HangmanPanel extends JPanel {
 
     public void increment() {numWrong++;}
 
+    public boolean gameOver () {
+        return numWrong >= 6;
+    }
+
     @Override
     protected void paintComponent (Graphics g) {
         int x = getWidth();
