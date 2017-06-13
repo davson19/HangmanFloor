@@ -14,6 +14,7 @@ public class RectPanel extends JPanel{
 
 	@Override
     protected void paintComponent(Graphics g) {
+        setBackground(new Color(149, 151, 148));
         Color[] c = {Color.red, Color.BLUE, Color.GREEN, Color.YELLOW, Color.BLACK, Color.CYAN, Color.PINK, Color.ORANGE};
         Random r = new Random();
         g.setColor(c[r.nextInt(c.length)]);

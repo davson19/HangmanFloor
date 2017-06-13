@@ -22,7 +22,7 @@ public class GameOverPanel extends JPanel {
             s = "win";
         }
         g.setFont(new Font(Font.DIALOG, Font.PLAIN, 10));
-        g.drawString("Game Over \n You " + s, getWidth() / 2, getHeight() / 2);
+        g.drawString("Game Over \n You " + s, getWidth() / 4, getHeight() / 2);
     }
 
 }

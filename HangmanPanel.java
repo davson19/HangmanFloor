@@ -16,6 +16,8 @@ public class HangmanPanel extends JPanel {
 
     @Override
     protected void paintComponent (Graphics g) {
+        super.paintComponent(g);
+        setBackground(new Color(149, 151, 148));
         int x = getWidth();
         int y = getHeight();
         g.drawLine(x / 5, y / 5, 3 * x / 5, y / 5);

@@ -21,7 +21,8 @@ public class WordsPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawString(unsolved, getWidth() / 2, getHeight() / 2);
+        setBackground(new Color(149, 151, 148));
+        g.drawString(unsolved, getWidth() / 4, getHeight() / 2);
     }
 
     public void setWord (String str) {
